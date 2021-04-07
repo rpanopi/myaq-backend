@@ -1,0 +1,61 @@
+= MyAQ Spring Boot REST API example
+
+A Spring Boot application which exposes one rest endpoint. This endpoint returns in a json format the following:
+
+* Server date
+* Server time
+* Server time zone
+
+Sample Ouput:
+
+[source,json]
+----
+{"date":"04/08/2021","time":"03:29:24","zoneName":"Asia/Manila"}
+----
+
+== Running Instance
+
+http://a328489c3e16a45b0b507970913d1d99-63329243.us-east-1.elb.amazonaws.com/serverDetails
+
+== How to run 
+
+* Clone the project
++
+[source,shell]
+----
+$ git clone https://github.com/rpanopi/myaq-backend.git
+----
+
+* Go to project directory
++
+[source,shell]
+----
+$ cd myaq-backend
+----
+
+* Build the project
++
+[source,shell]
+----
+$ ./gradlew bootRun
+----
+
+=== Deploy using docker command
+
+* Build the image
++
+[source,shell]
+----
+$ ./gradlew bootBuildImage --imageName=rpanops/myaq-backend:1.0.0
+----
+
+* Create and start the container as daemon
++
+[source,shell]
+----
+$ docker run -it -p80:80 rpanops/myaq-backend:1.0.0
+----
+
+=== Verify
+
+Open browser and use docker server URL: http://localhost:8080/serverDetails
